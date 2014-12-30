@@ -1,12 +1,8 @@
 module.exports = {
     book: {
         assets: "./book",
-        js: [
-            "test.js"
-        ],
-        css: [
-            "test.css"
-        ],
+        js: [],
+        css: [],
         html: {
             "html:start": function() {
                 return "<!-- Start book "+this.options.title+" -->"
