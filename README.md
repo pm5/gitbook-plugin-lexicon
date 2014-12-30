@@ -1,6 +1,6 @@
-GitBook Dictionary Plugin
-=========================
+GitBook Lexicon Plugin
+======================
 
-This plugin add tooltips to dictionary definitions for GitBook.
+This plugin add tooltips to lexicon definitions for GitBook.
 
-Install it using: ```$ npm install gitbook-plugin```
+(ToDo) Install it using: ```$ npm install gitbook-plugin-lexicon```
