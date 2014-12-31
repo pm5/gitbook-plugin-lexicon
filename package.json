@@ -3,7 +3,7 @@
     "author": "Pomin Wu (pm5) <pomin5@gmail.com>",
     "description": "GitBook Lexicon Plugin",
     "main": "index.js",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "engines": {
         "gitbook": "*"
     },
