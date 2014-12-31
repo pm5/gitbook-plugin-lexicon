@@ -1,8 +1,21 @@
+var fs = require('fs');
+var lexicon;
+
+function scanner(lexicon) {
+    return new RegExp('(' + lexicon.map(function (t) { return t["#title"] }).join('|') + ')', "g");
+};
+
+function rewriter(lexicon) {
+    return function (match, p1) {
+        console.log(p1);
+    };
+};
+
 module.exports = {
     book: {
-        assets: "./book",
-        js: [],
-        css: [],
+        //assets: "./book",
+        //js: [],
+        //css: [],
         html: {
             "html:start": function() {
                 return "<!-- Start book "+this.options.title+" -->"
@@ -19,53 +32,13 @@ module.exports = {
         }
     },
     hooks: {
-        // For all the hooks, this represent the current generator
-
-        // This is called before the book is generated
-        "init": function() {
-            console.log("init!");
+        "init": function () {
+            fs.readFile('lexicon.json', {encoding: 'utf-8'}, function (err, content) {
+                lexicon = JSON.parse(content);
+            });
         },
-
-        // This is called after the book generation
-        "finish": function() {
-            console.log("finish!");
-        },
-
-        // The following hooks are called for each page of the book
-        // and can be used to change page content (html, data or markdown)
-
-
-        // Before parsing markdown
-        "page:before": function(page) {
-            // page.path is the path to the file
-            // page.content is a string with the file markdown content
-
-            // Example:
-            //page.content = "# Title\n" + page.content;
-
-            return page;
-        },
-
-        // Before html generation
-        "page": function(page) {
-            // page.path is the path to the file
-            // page.sections is a list of parsed sections
-
-            // Example:
-            //page.sections.unshift({type: "normal", content: "<h1>Title</h1>"})
-
-            return page;
-        },
-
-        // After html generation
         "page:after": function(page) {
-            // page.path is the path to the file
-            // page.content is a string with the html output
-
-            // Example:
-            //page.content = "<h1>Title</h1>\n" + page.content;
-            // -> This title will be added before the html tag so not visible in the browser
-
+            page.content = page.content.replace(scanner(lexicon), rewriter(lexicon));
             return page;
         }
     }
