@@ -1,5 +1,5 @@
 var fs = require('fs');
-var lexicon;
+var lexicon, lexIndex;
 
 function scanner(lexicon) {
     return new RegExp('(' + lexicon.map(function (t) { return t["#title"] }).join('|') + ')', "g");
@@ -7,7 +7,7 @@ function scanner(lexicon) {
 
 function rewriter(lexicon) {
     return function (match, p1) {
-        console.log(p1);
+        return '<abbr title="' + lexIndex[p1]["#definition"] + '">' + p1 + '</abbr>';
     };
 };
 
@@ -35,6 +35,10 @@ module.exports = {
         "init": function () {
             fs.readFile('lexicon.json', {encoding: 'utf-8'}, function (err, content) {
                 lexicon = JSON.parse(content);
+                lexIndex = {};
+                lexicon.forEach(function (t) {
+                    lexIndex[t["#title"]] = t;
+                });
             });
         },
         "page:after": function(page) {
