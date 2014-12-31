@@ -42,7 +42,8 @@ module.exports = {
             });
         },
         "page:after": function(page) {
-            page.content = page.content.replace(scanner(lexicon), rewriter(lexicon));
+            var start = page.content.indexOf('<div class="book-body">');
+            page.content = page.content.substr(0, start) + page.content.substr(start).replace(scanner(lexicon), rewriter(lexicon));
             return page;
         }
     }
