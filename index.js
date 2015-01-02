@@ -6,12 +6,12 @@ var config = {
 };
 
 function scanner(lexicon) {
-    return new RegExp('(' + lexicon.map(function (t) { return t["#title"] }).join('|') + ')', "g");
+    return new RegExp('(' + lexicon.map(function (t) { return t["title"] }).join('|') + ')', "g");
 };
 
 function rewriter(lexicon) {
     return function (match, p1) {
-        return '<abbr title="' + lexIndex[p1]["#definition"] + '">' + p1 + '</abbr>';
+        return '<abbr title="' + lexIndex[p1]["definition"] + '">' + p1 + '</abbr>';
     };
 };
 
@@ -24,7 +24,7 @@ function loadLexicon(localCopy, d) {
         lexicon = JSON.parse(content);
         lexIndex = {};
         lexicon.forEach(function (t) {
-            lexIndex[t["#title"]] = t;
+            lexIndex[t["title"]] = t;
         });
         d.resolve();
     });
