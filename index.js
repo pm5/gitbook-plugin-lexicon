@@ -1,5 +1,9 @@
 var fs = require('fs');
+var Q = require('q');
 var lexicon, lexIndex;
+var config = {
+  "localCopy": "lexicon.json"
+};
 
 function scanner(lexicon) {
     return new RegExp('(' + lexicon.map(function (t) { return t["#title"] }).join('|') + ')', "g");
@@ -11,38 +15,31 @@ function rewriter(lexicon) {
     };
 };
 
-module.exports = {
-    book: {
-        //assets: "./book",
-        //js: [],
-        //css: [],
-        html: {
-            "html:start": function() {
-                return "<!-- Start book "+this.options.title+" -->"
-            },
-            "html:end": function() {
-                return "<!-- End of book "+this.options.title+" -->"
-            },
-
-            "head:start": "<!-- head:start -->",
-            "head:end": "<!-- head:end -->",
-
-            "body:start": "<!-- body:start -->",
-            "body:end": "<!-- body:end -->"
+function loadLexicon(localCopy, d) {
+    fs.readFile(localCopy, {encoding: 'utf-8'}, function (err, content) {
+        if (content === undefined) {
+            d.resolve();
+            return;
         }
-    },
+        lexicon = JSON.parse(content);
+        lexIndex = {};
+        lexicon.forEach(function (t) {
+            lexIndex[t["#title"]] = t;
+        });
+        d.resolve();
+    });
+};
+
+module.exports = {
     hooks: {
-        "init": function () {
-            fs.readFile('lexicon.json', {encoding: 'utf-8'}, function (err, content) {
-                if (content === undefined) {
-                    return;
-                }
-                lexicon = JSON.parse(content);
-                lexIndex = {};
-                lexicon.forEach(function (t) {
-                    lexIndex[t["#title"]] = t;
-                });
-            });
+        "init": function (done) {
+            var userConfig = this.options.pluginsConfig.lexicon;
+            for (c in userConfig) {
+                config[c] = userConfig[c];
+            }
+            var d = Q.defer();
+            loadLexicon(config["localCopy"], d);
+            return d.promise;
         },
         "page:after": function(page) {
             if (lexicon === undefined) {

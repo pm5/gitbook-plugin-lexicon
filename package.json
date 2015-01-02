@@ -1,19 +1,22 @@
 {
-    "name": "gitbook-plugin-lexicon",
-    "author": "Pomin Wu (pm5) <pomin5@gmail.com>",
-    "description": "GitBook Lexicon Plugin",
-    "main": "index.js",
-    "version": "0.0.3",
-    "engines": {
-        "gitbook": "*"
-    },
-    "homepage": "https://github.com/pm5/gitbook-plugin-lexicon",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/pm5/gitbook-plugin-lexicon.git"
-    },
-    "license": "Apache 2",
-    "bugs": {
-        "url": "https://github.com/pm5/gitbook-plugin-lexicon/issues"
-    }
+  "name": "gitbook-plugin-lexicon",
+  "author": "Pomin Wu (pm5) <pomin5@gmail.com>",
+  "description": "GitBook Lexicon Plugin",
+  "main": "index.js",
+  "version": "0.0.3",
+  "engines": {
+    "gitbook": "*"
+  },
+  "homepage": "https://github.com/pm5/gitbook-plugin-lexicon",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pm5/gitbook-plugin-lexicon.git"
+  },
+  "license": "Apache 2",
+  "bugs": {
+    "url": "https://github.com/pm5/gitbook-plugin-lexicon/issues"
+  },
+  "dependencies": {
+    "q": "^1.1.2"
+  }
 }
