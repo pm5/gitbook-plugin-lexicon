@@ -11,7 +11,7 @@ function scanner(lexicon) {
 
 function rewriter(lexicon) {
     return function (match, p1) {
-        return '<abbr title="' + lexIndex[p1]["definition"] + '">' + p1 + '</abbr>';
+        return '<span class="tooltip" title="' + lexIndex[p1]["definition"] + '"><span title="">' + p1 + '</span></span>';
     };
 };
 
@@ -31,6 +31,10 @@ function loadLexicon(localCopy, d) {
 };
 
 module.exports = {
+    book: {
+        "assets": "./book",
+        "css": ["lexicon.css"]
+    },
     hooks: {
         "init": function (done) {
             var userConfig = this.options.pluginsConfig.lexicon;
