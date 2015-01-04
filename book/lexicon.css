@@ -18,6 +18,7 @@
     z-index: 1000000;
     width: 220px;
     font-size: 14px;
+    font-weight: normal;
 }
 
 .hint:hover:before {
