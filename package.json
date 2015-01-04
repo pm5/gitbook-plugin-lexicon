@@ -8,6 +8,7 @@
     "gitbook": "*"
   },
   "homepage": "https://github.com/pm5/gitbook-plugin-lexicon",
+  "keywords": ["gitbook"],
   "repository": {
     "type": "git",
     "url": "https://github.com/pm5/gitbook-plugin-lexicon.git"
