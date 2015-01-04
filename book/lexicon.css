@@ -13,10 +13,11 @@
     color: #fff;
     content: attr(data-hint);
     left: 20%;
-    padding: 5px 15px;
+    padding: 9px 16px;
     position: absolute;
     z-index: 1000000;
     width: 220px;
+    font-size: 14px;
 }
 
 .hint:hover:before {
