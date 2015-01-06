@@ -49,7 +49,7 @@ module.exports = {
             if (lexicon === undefined) {
                 return page;
             }
-            page.content = page.content.replace(/<section[^.]*?>([^.]*?)<\/section>/g, function (match, section) {
+            page.content = page.content.replace(/<section[\s\S]*?>([\s\S]*?)<\/section>/g, function (match, section) {
                 return section.replace(scanner(lexicon), rewriter(lexicon));
             });
             return page;
