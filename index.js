@@ -6,7 +6,7 @@ var config = {
 };
 
 function scanner(lexicon) {
-    return new RegExp('(' + lexicon.map(function (t) { return t["title"] }).join('|') + ')', "g");
+    return new RegExp('(' + lexicon.map(function (t) { return t["title"] }).sort(function (a, b) { return b.length - a.length; }).join('|') + ')', "g");
 };
 
 function rewriter(lexicon) {
