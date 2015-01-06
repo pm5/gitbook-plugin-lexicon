@@ -16,7 +16,7 @@ Add the following entry in `book.json`:
 }
 ```
 
-Then install it with: ```$ gitbook install ./```.
+Then install it with: ```$ gitbook install .```.
 
 Put your lexicon definitions in `lexicon.json` in the following format:
 
