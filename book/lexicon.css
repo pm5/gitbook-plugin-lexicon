@@ -32,7 +32,7 @@
     .hint:hover:after {
         transform: translateY(26px);
         left: 0px;
-        width: 91%;
+        width: auto;
     }
 }
 
