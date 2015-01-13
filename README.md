@@ -49,6 +49,6 @@ Work with `gitbook-plugin-json`:
 }
 ```
 
-it will generate lexicon in `_book/content.json`.
+it will generate lexicon in `_book/content.json`.  Note that in the `plugins` array, `json` plugin must come *after* `lexicon` plugin.
 
 Then build gitbook with ```$ gitbook build```.
