@@ -52,6 +52,9 @@ module.exports = {
             page.content = page.content.replace(/<section[\s\S]*?>([\s\S]*?)<\/section>/g, function (match, section) {
                 return section.replace(scanner(lexicon), rewriter(lexicon));
             });
+            if (this.options.pluginsConfig.json) {
+                page.sections[0].content = page.sections[0].content.replace(scanner(lexicon), rewriter(lexicon));
+            }
             return page;
         }
     }
