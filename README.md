@@ -33,4 +33,22 @@ Put your lexicon definitions in `lexicon.json` in the following format:
 ]
 ```
 
+Work with `gitbook-plugin-json`:
+
+```
+{
+  "plugins":[
+    "lexicon",
+    "json"
+  ],
+  "pluginsConfig": {
+    "json": {
+      "output": "_book/content.json"
+    }
+  }
+}
+```
+
+it will generate lexicon in `_book/content.json`.
+
 Then build gitbook with ```$ gitbook build```.
