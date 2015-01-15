@@ -11,7 +11,7 @@ function scanner(lexicon) {
 
 function rewriter(lexicon) {
     return function (match, p1) {
-        return '<span class="hint" data-hint="' + lexIndex[p1]["definition"] + '">' + p1 + '</span>';
+        return '<span class="hint" data-hint="' + lexIndex[p1]["definition"].trim() + '">' + p1 + '</span>';
     };
 };
 
