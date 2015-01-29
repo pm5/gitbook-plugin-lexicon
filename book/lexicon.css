@@ -16,7 +16,6 @@
     z-index: 1000000;
     font-size: 14px;
     font-weight: normal;
-    top: 0;
 }
 
 .hint:hover:before {
@@ -42,6 +41,7 @@
         transform: translateY(26px);
         left: 0px;
         width: 220px;
+        top: 0;
     }
     .hint {
         position: relative;
