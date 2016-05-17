@@ -45,7 +45,7 @@ module.exports = {
             loadLexicon(config["localCopy"], d);
             return d.promise;
         },
-        "page:after": function(page) {
+        "page": function(page) {
             if (lexicon === undefined) {
                 return page;
             }
